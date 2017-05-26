@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <notes [section]="section"></notes>
+        </div>
+        <div class="col-md-4">
+            <sections [section]="section"
+                      (sectionChanged)="setSection($event)"></sections>
+        </div>
+    </div>
+</div>
