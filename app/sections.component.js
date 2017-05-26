@@ -13,15 +13,19 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var ng2_dragula_1 = require("ng2-dragula");
+var LoginService_1 = require("./services/LoginService");
 var SectionsComponent = (function () {
-    function SectionsComponent(http, dragulaService) {
+    function SectionsComponent(http, dragulaService, loginService) {
+        var _this = this;
         this.http = http;
         this.dragulaService = dragulaService;
+        this.loginService = loginService;
         this.sectionsUrl = 'sections'; // URL to web api
         this.sectionsReplaceUrl = "/sections/replace";
         this.sectionChanged = new core_1.EventEmitter();
         this.readSections();
         dragulaService.drop.subscribe(this.onDrop.bind(this));
+        this.loginService.userLogin$.subscribe(function (user) { return _this.readSections(); });
     }
     Object.defineProperty(SectionsComponent.prototype, "section", {
         set: function (section) {
@@ -91,7 +95,9 @@ SectionsComponent = __decorate([
         selector: 'sections',
         templateUrl: "app/sections.component.html"
     }),
-    __metadata("design:paramtypes", [http_1.Http, ng2_dragula_1.DragulaService])
+    __metadata("design:paramtypes", [http_1.Http,
+        ng2_dragula_1.DragulaService,
+        LoginService_1.LoginService])
 ], SectionsComponent);
 exports.SectionsComponent = SectionsComponent;
 //# sourceMappingURL=sections.component.js.map

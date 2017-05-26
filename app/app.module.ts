@@ -17,6 +17,8 @@ import {CanDeactivateNote} from "./services/canDeactivateNote.service";
 import {UserFormComponent} from "./userForm.component";
 import {EqualToValidator} from "./directives/EqualToValidator";
 import {UserUniqueValidator} from "./directives/UserUniqueValidator";
+import {LoginFormComponent} from "./loginForm.component";
+import {LoginService} from "./services/LoginService";
 
 const appRoutes: Routes = [
     {path: '', component: NotesEditorComponent, canDeactivate: [CanDeactivateNote]},
@@ -32,9 +34,9 @@ const appRoutes: Routes = [
     declarations: [AppComponent, NotesComponent, SectionsComponent,
         SectionFilterPipe, NoteFilterPipe, NotesEditorComponent,
         PageNotFoundComponent, ViewSectionComponent, UserFormComponent,
-        EqualToValidator, UserUniqueValidator],
+        EqualToValidator, UserUniqueValidator, LoginFormComponent],
     bootstrap: [AppComponent],
-    providers: [NotesServerService, CanDeactivateNote]
+    providers: [NotesServerService, CanDeactivateNote, LoginService]
 })
 
 export class AppModule {

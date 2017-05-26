@@ -29,7 +29,6 @@ export class NotesComponent implements OnChanges {
     readNotes() {
         this.notesServer.getNotes(this.section).subscribe(notes => {
             this.notes = notes
-            console.log(notes);
         });
     }
 

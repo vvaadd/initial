@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 import {DragulaService} from "ng2-dragula";
+import {LoginService} from "./services/LoginService";
 
 @Component({
     selector: 'sections',
@@ -26,9 +27,12 @@ export class SectionsComponent {
         }
     }
 
-    constructor(private http: Http, private dragulaService: DragulaService) {
+    constructor(private http: Http,
+                private dragulaService: DragulaService,
+                private loginService: LoginService) {
         this.readSections();
         dragulaService.drop.subscribe(this.onDrop.bind(this));
+        this.loginService.userLogin$.subscribe(user => this.readSections());
     }
 
     onDrop(value) {

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {User} from "./model/User";
 import {Http} from "@angular/http";
 import {Router} from "@angular/router";
+import {LoginService} from "./services/LoginService";
 
 @Component({
     templateUrl: 'app/userForm.component.html',
@@ -15,12 +16,21 @@ import {Router} from "@angular/router";
 export class UserFormComponent {
     user: User = new User();
 
-    constructor(private http: Http, private router: Router) {
+    constructor(private http: Http,
+                private router: Router,
+                private loginService: LoginService) {
     }
 
     onSubmit() {
         this.http.post("users", this.user).subscribe(res => {
-            this.router.navigateByUrl("");
+            this.loginService.login({
+                username: this.user.name,
+                password: this.user.password
+            }).subscribe(res => {
+                if (res) {
+                    this.router.navigateByUrl("/");
+                }
+            });
         });
     }
 }

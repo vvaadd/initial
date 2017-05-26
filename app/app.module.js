@@ -25,6 +25,8 @@ var canDeactivateNote_service_1 = require("./services/canDeactivateNote.service"
 var userForm_component_1 = require("./userForm.component");
 var EqualToValidator_1 = require("./directives/EqualToValidator");
 var UserUniqueValidator_1 = require("./directives/UserUniqueValidator");
+var loginForm_component_1 = require("./loginForm.component");
+var LoginService_1 = require("./services/LoginService");
 var appRoutes = [
     { path: '', component: notesEditor_component_1.NotesEditorComponent, canDeactivate: [canDeactivateNote_service_1.CanDeactivateNote] },
     { path: 'register', component: userForm_component_1.UserFormComponent },
@@ -44,9 +46,9 @@ AppModule = __decorate([
         declarations: [app_component_1.AppComponent, notes_component_1.NotesComponent, sections_component_1.SectionsComponent,
             section_filter_pipe_1.SectionFilterPipe, note_filter_pipe_1.NoteFilterPipe, notesEditor_component_1.NotesEditorComponent,
             pageNotFound_component_1.PageNotFoundComponent, viewSection_component_1.ViewSectionComponent, userForm_component_1.UserFormComponent,
-            EqualToValidator_1.EqualToValidator, UserUniqueValidator_1.UserUniqueValidator],
+            EqualToValidator_1.EqualToValidator, UserUniqueValidator_1.UserUniqueValidator, loginForm_component_1.LoginFormComponent],
         bootstrap: [app_component_1.AppComponent],
-        providers: [notesServer_service_1.NotesServerService, canDeactivateNote_service_1.CanDeactivateNote]
+        providers: [notesServer_service_1.NotesServerService, canDeactivateNote_service_1.CanDeactivateNote, LoginService_1.LoginService]
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -31,7 +31,6 @@ var NotesComponent = (function () {
         var _this = this;
         this.notesServer.getNotes(this.section).subscribe(function (notes) {
             _this.notes = notes;
-            console.log(notes);
         });
     };
     NotesComponent.prototype.add = function () {
